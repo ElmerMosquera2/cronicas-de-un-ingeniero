@@ -4,7 +4,7 @@ Tengo el placer de presentar el sistema de gobernanza agnostico domer devido de 
 
 domer: el es proceso de captar una idea, refinarla, aplicar ciclos automatizables con bloques delimitados de contexto bajo una `vision`, llamados `ddr (registro de deciciones metodicas)`, son la forma de refinar y mejorar el como lograr lo propuesto.
 
->[!impotant]
+>[!Important]
 > Un `motor de busqueda`, no es una identidad sino un concepto abstrado, que describe la realidad sobre las formas en identidades propias y distingibles como el buscador de **Google**, ***Bing** o **Perplexity**. Del mismo modo que domer es la abstraccion del sistema de gobernaza.
 
 > **Ejemplo:** Un motor de bucqueda con IA, es la descripcion en bruto `realidad sobre las formas`, de los buscadores con nombre propio que ya mencionados. Sin embargo, este se simenta en tecnologias, estudios, teorias que pueden ser o no reinventadas o micro diseñadas, sin embargo, la `realidad sobre la forma` dada `la teoria general de sistema`: **el todo es mas que la suma de sus partes**. No permite notar que **el mismo transistor que sirvio para crear crear computadoras, sirvio para dar luz al concepto **intenet de las cosas**. 
