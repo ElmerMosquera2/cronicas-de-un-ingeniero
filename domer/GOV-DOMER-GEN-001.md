@@ -17,7 +17,7 @@ ultima_revision: 2026-07-12
 >
 > Esta versión incorpora dos mejoras fundamentales para proyectos cuyo producto es conocimiento:
 > el concepto de **Visión Activa** (documento rector que se versiona desde su nacimiento) y la
-> sustitución de las Decisiones de Arquitectura por **Decisiones Metódicas (DDR)**, que reflejan
+> sustitución de las Decisiones de Arquitectura por **Decisiones Metódicas (MDR)**, que reflejan
 > los enfoques, métodos y protocolos que transforman datos en conclusiones.
 
 ---
@@ -30,10 +30,10 @@ proyecto/
 ├── 01_Vision/              # Visión Activa (objetivo de conocimiento, pregunta central, guía de actividad).
 ├── 02_Elementos/           # Unidades de trabajo formalizadas: datos, análisis, resultados intermedios.
 │   └── _Plantillas/        # Plantillas reutilizables de Elementos y Decisiones.
-├── 03_Decisiones/          # Decisiones Metódicas (DDR): enfoques, métodos, protocolos.
+├── 03_Decisiones/          # Decisiones Metódicas (MDR): enfoques, métodos, protocolos.
 ├── 04_Ciclos/              # Planificación y producción cíclica. Cada ciclo contiene las ramas activas
 │   ├── Ciclo-01/           #   o referencias al trabajo en curso (dominio/, metodo/, exploracion/).
-│   │   ├── plan.md         #   Plan del ciclo: qué Elementos y DDRs se abordan.
+│   │   ├── plan.md         #   Plan del ciclo: qué Elementos y MDRs se abordan.
 │   │   ├── dominio/        #   Ramas de trabajo activas durante este ciclo.
 │   │   ├── metodo/         #   Ramas de decisiones metódicas en implementación.
 │   │   └── revision.md     #   Cierre del ciclo: qué se completó, qué se aprendió.
@@ -48,7 +48,7 @@ proyecto/
 - `01_Vision/` contiene los documentos de Visión Activa (`VA-XXX`), que se versionan formalmente desde su creación (ver sección 2.1).
 - `02_Elementos/` y `03_Decisiones/` solo contienen notas con frontmatter válido (ver sección 2).
 - `04_Ciclos/` es el espacio de **planificación y producción**. Cada ciclo contiene:
-  - Un archivo `plan.md` que detalla qué Elementos (ET-XXX) y Decisiones (DDR-XXX) se abordarán.
+  - Un archivo `plan.md` que detalla qué Elementos (ET-XXX) y Decisiones (MDR-XXX) se abordarán.
   - Las **ramas de trabajo activas** (si se usa Git) o **carpetas de trabajo** (si no se usa Git) donde se ejecuta el desarrollo real: `dominio/`, `metodo/`, `exploracion/`, etc. Estas ramas siguen la convención GitFlow descrita en la sección 7.
   - Un archivo `revision.md` que documenta el cierre del ciclo: entregables completados, lecciones aprendidas y ajustes para el siguiente ciclo.
 - `_Archivo/` recibe las notas con `status: Deprecado` que ya no están activas pero no se eliminan.
@@ -96,26 +96,26 @@ id: ET-001
 status: Pendiente        # Pendiente | En Progreso | Aprobado | Deprecado
 prioridad: Alta          # Crítica | Alta | Media | Baja
 area: "Región Andina"    # Componente, región, materia, línea temática, etc.
-origen: DDR-001          # Referencia a la Decisión Metódica que lo justifica
+origen: MDR-001          # Referencia a la Decisión Metódica que lo justifica
 responsable: "@persona"  # opcional
 ciclo: "Ciclo-01"        # Sprint / semana / fase en la que se trabaja
 rama: "dominio/ET-001-nombre-corto-v1.0"  # opcional, ver sección 7
 ---
 ```
 
-### 2.3 Decisión Metódica (`03_Decisiones/DDR-XXX.md`)
+### 2.3 Decisión Metódica (`03_Decisiones/MDR-XXX.md`)
 
-Las Decisiones Metódicas (DDR) documentan el *cómo*: qué enfoque, método, técnica o protocolo se elige para transformar datos o ideas en conocimiento validado.
+Las Decisiones Metódicas (MDR) documentan el *cómo*: qué enfoque, método, técnica o protocolo se elige para transformar datos o ideas en conocimiento validado.
 
 ```yaml
 ---
 tipo: decision_metodica
-id: DDR-001
+id: MDR-001
 status: Propuesta        # Propuesta | Aceptada | Superada
 fecha: 2026-07-12
-reemplaza: DDR-000         # si esta decisión sustituye a una anterior
+reemplaza: MDR-000         # si esta decisión sustituye a una anterior
 superada_por:              # si otra decisión posterior la deja sin efecto
-rama: "metodo/DDR-001-nombre-corto"  # opcional
+rama: "metodo/MDR-001-nombre-corto"  # opcional
 elementos_derivados:       # Lista de ET-XXX que materializan esta decisión
   - ET-001
   - ET-002
@@ -163,17 +163,17 @@ Cada Elemento debe responder al **por qué** y al **cómo se valida**, no solo d
 *Supuestos, riesgos, dependencias o ideas sobre cómo abordarlo.*
 
 ## 🔗 5. Trazabilidad
-*   **Decisión Metódica de origen (si aplica):** [[DDR-001]]
+*   **Decisión Metódica de origen (si aplica):** [[MDR-001]]
 *   **Conversación/Insumo:** [Enlace o referencia]
 *   **Entregable/Resultado:** [Enlace al producto final]
-*   **Decisión Relacionada:** [[DDR-001]]
+*   **Decisión Relacionada:** [[MDR-001]]
 *   **Casos de Validación:** [[CV-001]], [[CV-002]]
 ```
 
 **Definición de Listo (DoR)** para mover de `00_Bandeja_Entrada/` a `02_Elementos/`:
 - Título descriptivo e identificador asignado.
 - Al menos un párrafo en "El Por Qué" y un actor identificado.
-- El `origen` está documentado (normalmente un DDR).
+- El `origen` está documentado (normalmente un MDR).
 - Criterios de cumplimiento iniciales esbozados.
 
 ---
@@ -193,7 +193,7 @@ graph LR
 ### 4.1 Fases
 
 1. **Captura:** cualquier persona anota ideas, hallazgos o insumos en `00_Bandeja_Entrada/`, sin formato exigido.
-2. **Refinamiento (sesión periódica):** se revisa la bandeja; lo que cumple la DoR recibe un ID (`ET-XXX` o `DDR-XXX`), se le asigna el frontmatter completo y se mueve a `02_Elementos/` o `03_Decisiones/` con estado `Pendiente`.
+2. **Refinamiento (sesión periódica):** se revisa la bandeja; lo que cumple la DoR recibe un ID (`ET-XXX` o `MDR-XXX`), se le asigna el frontmatter completo y se mueve a `02_Elementos/` o `03_Decisiones/` con estado `Pendiente`.
 3. **Desarrollo:** al iniciarse el trabajo, `status` pasa a `En Progreso`. Se crea la rama de trabajo correspondiente (siguiendo la convención GitFlow de la sección 7) dentro de la carpeta del ciclo activo (`04_Ciclos/Ciclo-XX/`), se abre el espacio de discusión (issue, hilo, reunión) y se enlaza en la trazabilidad. **El desarrollo real ocurre en estas ramas**, no en las notas estáticas de `02_Elementos/`.
 4. **Consolidación:** al terminar, se marcan los criterios cumplidos, se fusiona la rama (o se cierra la carpeta de trabajo), se cambia `status` a `Aprobado` y se enlaza el entregable final.
 5. **Deprecación:** si un Elemento deja de ser relevante, `status` pasa a `Deprecado`, se mueve a `_Archivo/` y se documenta el motivo.
@@ -206,12 +206,12 @@ graph LR
 
 ### 4.3 Relación entre Decisiones Metódicas y Elementos
 
-La mayoría de los Elementos nacen de una Decisión Metódica. Un DDR puede desglosarse en **varios Elementos** que lo materializan en distintas partes del proyecto.
+La mayoría de los Elementos nacen de una Decisión Metódica. Un MDR puede desglosarse en **varios Elementos** que lo materializan en distintas partes del proyecto.
 
-1. Se crea un DDR en `03_Decisiones/` con estado `Propuesta`.
-2. Se redactan uno o más `ET-XXX` cuyo `origen` apunta al DDR.
+1. Se crea un MDR en `03_Decisiones/` con estado `Propuesta`.
+2. Se redactan uno o más `ET-XXX` cuyo `origen` apunta al MDR.
 3. Cada Elemento sigue su ciclo de vida independiente.
-4. El DDR mantiene el campo `elementos_derivados` para trazabilidad inversa.
+4. El MDR mantiene el campo `elementos_derivados` para trazabilidad inversa.
 5. Cuando todos los Elementos derivados están `Aprobado`, la decisión metódica se considera implementada.
 
 ### 4.4 Bucle de realimentación: de la validación a la bandeja de entrada
@@ -220,10 +220,10 @@ En proyectos de construcción de conocimiento, la validación frecuentemente gen
 
 ```mermaid
 graph LR
-    A[Elemento en Desarrollo] -->|Aplicación de DDR| B[Resultado preliminar]
+    A[Elemento en Desarrollo] -->|Aplicación de MDR| B[Resultado preliminar]
     B -->|Validación CV| C[Descubrimiento inesperado]
     C -->|Captura| D[00_Bandeja_Entrada]
-    D -->|Refinamiento| E[Nuevo ET o DDR]
+    D -->|Refinamiento| E[Nuevo ET o MDR]
 ```
 
 ---
@@ -243,13 +243,13 @@ SORT prioridad ASC
 ```dataview
 TABLE origen AS "Decisión Origen", status AS "Estado", prioridad AS "Prioridad"
 FROM "02_Elementos"
-WHERE tipo = "elemento" AND contains(origen, "DDR")
+WHERE tipo = "elemento" AND contains(origen, "MDR")
 SORT origen ASC
 ```
 
 Para quienes no utilicen Obsidian, el panel puede implementarse con cualquier herramienta de filtrado (etiquetas, vistas de base de datos, hojas de cálculo). Lo esencial es mantener visibles:
 - Los Elementos activos agrupados por estado y prioridad.
-- La relación entre DDRs y sus Elementos derivados.
+- La relación entre MDRs y sus Elementos derivados.
 - El estado de los Casos de Validación vinculados a cada Elemento.
 
 ---
@@ -259,7 +259,7 @@ Para quienes no utilicen Obsidian, el panel puede implementarse con cualquier he
 - Este manual se versiona junto con el proyecto; cualquier cambio de metodología se refleja aquí.
 - Las plantillas en `_Plantillas/` son el punto único de verdad del formato de las notas.
 - Periódicamente se revisa `_Archivo/` y se depuran notas obsoletas sin valor histórico.
-- Cuando un DDR se supera, se revisan los Elementos que apuntaban a él (`origen`) y se actualiza el enlace.
+- Cuando un MDR se supera, se revisan los Elementos que apuntaban a él (`origen`) y se actualiza el enlace.
 - La Visión Activa (`VA-XXX`) se versiona formalmente: cada revisión sustancial genera un nuevo archivo o commit, y la versión anterior se conserva en el histórico del sistema de control de versiones.
 
 ---
@@ -274,7 +274,7 @@ Si el proyecto usa Git (incluso para documentos, informes o datos) se recomienda
 | `entrega/`            | `entrega/vX.Y.Z`                     | Entrega candidata; agrupa varios Elementos del ciclo.                       |
 | `correccion/`         | `correccion/vX.Y.Z`                  | Corrección urgente sobre un entregable ya publicado.                        |
 | `exploracion/`        | `exploracion/<tema>-<periodo>`       | Exploración o prototipado ligado a ideas de la Bandeja de Entrada.          |
-| `metodo/`             | `metodo/DDR-XXX-<descripción>`       | Implementación de una Decisión Metódica documentada en `03_Decisiones/`.    |
+| `metodo/`             | `metodo/MDR-XXX-<descripción>`       | Implementación de una Decisión Metódica documentada en `03_Decisiones/`.    |
 | `vision/`             | `vision/VA-XXX-vX.Y`                 | Ramas dedicadas a la evolución de la Visión Activa (opcional).              |
 | `main`                | `main`                               | Versión consolidada del proyecto / entregable oficial vigente.              |
 
@@ -284,7 +284,7 @@ Si el proyecto usa Git (incluso para documentos, informes o datos) se recomienda
 - Al fusionarla/cerrarla, se actualiza el Elemento: `status`, enlace al entregable, trazabilidad.
 - Al consolidar una `entrega/`, todos los Elementos incluidos pasan a `Aprobado`.
 - Las `exploracion/` viven idealmente un ciclo; si se formalizan, generan una rama `dominio/` nueva.
-- Las `metodo/` se cierran cuando el DDR pasa a `Aceptada`.
+- Las `metodo/` se cierran cuando el MDR pasa a `Aceptada`.
 - La Visión Activa se puede gestionar en una rama `vision/` o directamente en `main` a través de commits versionados que incrementan el número de versión.
 
 ---
@@ -320,27 +320,27 @@ El arco iris secundario presenta inversión de colores y menor intensidad que
 el primario. Aunque la óptica geométrica lo explica parcialmente, existen
 variaciones observables en campo que no están completamente modeladas.
 
-## Primeros pasos metodológicos (a refinar con DDRs)
+## Primeros pasos metodológicos (a refinar con MDRs)
 - Recolectar datos de avistamientos (ubicación, hora, condiciones atmosféricas).
 - Aplicar modelo de dispersión de Mie para gotas de agua.
 - Contrastar predicciones del modelo con observaciones de campo.
 ```
 
-### 8.2 Decisión Metódica (`03_Decisiones/DDR-001.md`)
+### 8.2 Decisión Metódica (`03_Decisiones/MDR-001.md`)
 
 ```yaml
 ---
 tipo: decision_metodica
-id: DDR-001
+id: MDR-001
 status: Aceptada
 fecha: 2026-07-12
-rama: "metodo/DDR-001-modelo-mie"
+rama: "metodo/MDR-001-modelo-mie"
 elementos_derivados:
   - ET-001
   - ET-002
 ---
 
-# DDR-001: Modelado de dispersión mediante teoría de Mie
+# MDR-001: Modelado de dispersión mediante teoría de Mie
 
 ## Contexto
 Para explicar la inversión cromática del arco iris secundario se necesita un
@@ -371,7 +371,7 @@ id: ET-001
 status: Aprobado
 prioridad: Alta
 area: "recolección de datos"
-origen: DDR-001
+origen: MDR-001
 ciclo: "Ciclo-01"
 rama: "dominio/ET-001-datos-gotas-v1.0"
 ---
@@ -391,7 +391,7 @@ Sin estos datos, la simulación no puede contrastarse con la realidad.
 - [x] Los datos cubren al menos 5 tormentas con arco iris visible.
 
 ## 🔗 5. Trazabilidad
-- **DDR de origen:** [[DDR-001]]
+- **MDR de origen:** [[MDR-001]]
 - **Entregable:** `datos/gotas_tormenta_2026-07.csv`
 - **Casos de Validación:** [[CV-001]]
 ```
@@ -405,7 +405,7 @@ id: ET-002
 status: En Progreso
 prioridad: Alta
 area: "simulación óptica"
-origen: DDR-001
+origen: MDR-001
 ciclo: "Ciclo-01"
 rama: "dominio/ET-002-simulacion-mie-v1.0"
 ---
@@ -422,7 +422,7 @@ los avistamientos de campo.
 - [ ] El código está documentado y versionado.
 
 ## 🔗 5. Trazabilidad
-- **DDR de origen:** [[DDR-001]]
+- **MDR de origen:** [[MDR-001]]
 - **Repositorio:** [enlace al código]
 - **Casos de Validación:** [[CV-002]]
 ```
