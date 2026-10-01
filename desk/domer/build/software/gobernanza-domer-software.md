@@ -100,7 +100,7 @@ alternativas_evaluadas: false
 ```yaml
 ---
 tipo: mdr
-id: MDR-XXX
+id: MDR-X
 status: Propuesta         # Propuesta | Aceptada | Superada
 fecha: YYYY-MM-DD
 vision_origen: VA-XXX
@@ -116,7 +116,7 @@ rama: "mdr/MDR-XXX-descripcion"
 ```yaml
 ---
 tipo: adr
-id: ADR-XXX
+id: ADR-X
 status: Propuesto         # Propuesto | Aceptado | Superado
 fecha: YYYY-MM-DD
 vision_origen: VA-XXX
