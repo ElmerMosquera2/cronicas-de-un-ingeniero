@@ -38,7 +38,7 @@ proyecto/
 │   │   ├── metodo/         #   Ramas de decisiones metódicas en implementación.
 │   │   └── revision.md     #   Cierre del ciclo: qué se completó, qué se aprendió.
 │   └── Ciclo-02/
-├── 05_Validacion/          # Casos de validación, experimentos, pruebas de hipótesis, revisiones.
+├── 05_Validaciones/          # Casos de validación, experimentos, pruebas de hipótesis, revisiones.
 ├── _Archivo/               # Notas obsoletas o deprecadas, conservadas por trazabilidad.
 └── METODO_DOMER.md         # Este manual.
 ```
@@ -268,15 +268,15 @@ Para quienes no utilicen Obsidian, el panel puede implementarse con cualquier he
 
 Si el proyecto usa Git (incluso para documentos, informes o datos) se recomiendan las siguientes convenciones de ramas. Si no se usa Git, el mismo esquema se traduce a **carpetas de trabajo con el mismo nombre**, cumpliendo la misma función de aislar y trazar cada pieza de trabajo.
 
-| Tipo de rama/carpeta | Formato                              | Propósito                                                                 |
-| --------------------- | ------------------------------------ | -------------------------------------------------------------------------- |
-| `dominio/`            | `dominio/ET-XXX-<descripción>-vX.Y`  | Desarrollo de un Elemento específico. Enlaza con la nota en `02_Elementos/`. |
-| `entrega/`            | `entrega/vX.Y.Z`                     | Entrega candidata; agrupa varios Elementos del ciclo.                       |
-| `correccion/`         | `correccion/vX.Y.Z`                  | Corrección urgente sobre un entregable ya publicado.                        |
-| `exploracion/`        | `exploracion/<tema>-<periodo>`       | Exploración o prototipado ligado a ideas de la Bandeja de Entrada.          |
-| `metodo/`             | `metodo/MDR-XXX-<descripción>`       | Implementación de una Decisión Metódica documentada en `03_Decisiones/`.    |
-| `vision/`             | `vision/VA-XXX-vX.Y`                 | Ramas dedicadas a la evolución de la Visión Activa (opcional).              |
-| `main`                | `main`                               | Versión consolidada del proyecto / entregable oficial vigente.              |
+| Tipo de rama/carpeta | Formato                             | Propósito                                                                    |
+| -------------------- | ----------------------------------- | ---------------------------------------------------------------------------- |
+| `dominio/`           | `dominio/ET-XXX-<descripción>-vX.Y` | Desarrollo de un Elemento específico. Enlaza con la nota en `02_Elementos/`. |
+| `entrega/`           | `entrega/vX.Y.Z`                    | Entrega candidata; agrupa varios Elementos del ciclo.                        |
+| `correccion/`        | `correccion/vX.Y.Z`                 | Corrección urgente sobre un entregable ya publicado.                         |
+| `exploracion/`       | `exploracion/<tema>-<periodo>`      | Exploración o prototipado ligado a ideas de la Bandeja de Entrada.           |
+| `metodo/`            | `metodo/MDR-XXX-<descripción>`      | Implementación de una Decisión Metódica documentada en `03_Decisiones/`.     |
+| `vision/`            | `vision/VA-XXX-vX.Y`                | Ramas dedicadas a la evolución de la Visión Activa (opcional).               |
+| `main`               | `main`                              | Versión consolidada del proyecto / entregable oficial vigente.               |
 
 **Reglas de integración:**
 - Toda rama `dominio/` debe tener un `ET-XXX` asociado en `Pendiente` o `En Progreso`.
