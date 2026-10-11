@@ -1,12 +1,14 @@
 ---
-Estado: Activo  
-Dominio: Estructura del repositorio  
-Propósito: Delimitar la organización de directorios y archivos utilizada para separar el conocimiento del producto según su propósito, estado y relación con la gobernanza.
+tipo: dominio
+dominios: Estructura del repositorio
+estado: En delimitacion
+vision_origen: VA-001-domer-agnostico
+descripcion: Delimitar los espacios de trabajo
 ---
 
 # [DOM-001] Estructura del repositorio
 
-## 1. Definición
+## Qué es
 
 La estructura del repositorio establece dónde reside cada tipo de información dentro del producto y qué función cumple cada espacio.
 
@@ -41,7 +43,7 @@ La estructura base es:
 
 ```text
 _docs_[nombre-proyecto]/
-├── inbox/                # Entradas formales a procesamiento, pre-planning
+├── inbox/                # Entradas a procesamiento, pre-planning
 ├── vision/
 │   ├── dominios/         # Dominios de la visión
 │   └── va.md             # Visión Activa
@@ -51,7 +53,7 @@ _docs_[nombre-proyecto]/
 └── sprints/              # Ciclos de planeación
 
 desk/                     # Mesa de trabajo
-build/                    # Productos formales
+build/                    # Productos formales (espacio de despliege)
 cronicas/                 # Notas crudas, bitácoras y experiencias sin procesar
 
 README.md                 # Estándar Git

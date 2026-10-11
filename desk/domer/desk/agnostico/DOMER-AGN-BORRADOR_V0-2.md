@@ -14,75 +14,62 @@ DOMER es un marco de gobernanza para productos.
 
 Su propósito es gobernar la evolución de un producto preservando el porqué de las decisiones que determinan su forma, de modo que puedan comprenderse, cuestionarse y modificarse con trazabilidad a medida que cambia el contexto.
 
-DOMER es agnóstico al tipo de producto. Puede aplicarse a software, investigaciones, productos físicos, iniciativas culturales, procesos, servicios u otros productos cuya evolución dependa de decisiones.
+El marco es agnóstico al tipo de producto. Puede aplicarse a software, investigaciones, productos físicos, iniciativas culturales, procesos, servicios u otros productos cuya evolución dependa de decisiones. Dado que este no determina qué producto debe construirse ni prescribe una disciplina particular para producirlo. Y en su lugar define una forma de organizar las decisiones que gobiernan la evolución del producto y define tambien la forma de conservar la relación entre el propósito, el contexto, las decisiones de aquello que finalmente se materializa.
 
-El marco no determina qué producto debe construirse ni prescribe una disciplina particular para producirlo. Define una forma de organizar las decisiones que gobiernan su evolución y de conservar la relación entre el propósito, el contexto, las decisiones y aquello que finalmente se materializa.
-
-DOMER puede utilizarse junto con otras metodologías. En un producto de software puede coexistir, por ejemplo, con Scrum, Kanban, XP u otra forma de organizar la producción. La metodología utilizada para producir el producto no constituye por sí misma la gobernanza DOMER.
+Domer puede utilizarse junto con otras metodologías. En un producto de software puede coexistir, por ejemplo, con Scrum. La metodología utilizada para producir el producto no constituye por sí misma la gobernanza DOMER, aunque por efectos practicos abordaremos brevemente Domer + Scrum.
 
 ---
 
 ## 2. Área de trabajo
 
-El área de trabajo de DOMER es la gobernanza de las decisiones que condicionan la evolución de un producto.
+El área de trabajo de DOMER se centra en la carpeta docs segun la siguiente estructura:
 
-Esto comprende:
-
-- el propósito y los límites generales expresados por la Visión Activa;
-    
-- la delimitación de áreas de trabajo mediante dominios;
-    
-- los métodos adoptados para actuar dentro de esas áreas;
-    
-- las tecnologías, herramientas, técnicas o medios elegidos para materializar esos métodos;
-    
-- las decisiones que justifican esas elecciones;
-    
-- los requisitos derivados de dichas decisiones;
-    
-- la trazabilidad entre las decisiones y su materialización;
-    
-- la revisión de las decisiones cuando cambia el contexto.
-    
-
-DOMER no pretende gobernar todas las actividades que ocurren durante la producción.
-
-Una actividad puede realizarse sin convertirse en un artefacto de gobernanza. El marco interviene cuando el conocimiento producido por esa actividad es relevante para comprender, mantener o modificar la forma en que el producto evoluciona.
-
-Por esta razón, DOMER distingue entre producir y gobernar.
-
-Producir consiste en transformar una intención, una necesidad o una decisión en un resultado.
-
-Gobernar consiste en conservar y relacionar las razones que permiten decidir cómo debe evolucionar ese resultado.
-
----
-
-## 3. La estructura conceptual
-
-DOMER organiza la gobernanza mediante cuatro conceptos principales:
-
-```text
-                 VISIÓN ACTIVA
-                       │
-                       ▼
-                   DOMINIOS
-                       │
-                       ▼
-                     ADR
-                       │
-                       ▼
-                     REQ
-                       │
-                       ▼
-                MATERIALIZACIÓN
-                       │
-                       ▼
-                   VALIDACIÓN
 ```
 
-Esta relación representa una dirección de trazabilidad, no necesariamente una estructura física de carpetas ni un flujo de ejecución obligatorio.
+_docs_[nombre-proyecto]/
+├── inbox/                # Entradas a procesamiento, pre-planning
+├── vision/
+│   ├── dominios/         # Dominios de la visión
+│   └── va.md             # Visión Activa
+├── req/                  # Elementos de trabajo
+├── adr/                  # Decisiones de arquitectura
+├── test/                 # Validaciones de producto, integración y funcionamiento
+└── sprints/              # Ciclos de planeación
 
+desk/                     # Mesa de trabajo
+build/                    # Productos formales (espacio de despliege)
+cronicas/                 # Notas crudas, bitácoras y experiencias sin procesar
+
+README.md                 # Estándar Git
+CHANGELOG.md              # Estándar Git
+```
+
+> Producir consiste en transformar una intención, una necesidad o una decisión en un resultado.
+
+> Gobernar consiste en conservar y relacionar las razones que permiten decidir cómo debe evolucionar ese resultado.
+
+---
 ### Visión Activa
+
+```md
+---
+tipo: vision
+id: VA-XXX
+estado: Borrador # Borrador | Activa | Superada
+naturaleza: # libre, opcional — p.ej. Comercial, Herramienta, Hipótesis-solución
+descripcion:
+---
+
+## Que es
+
+## Que no es
+
+## Como funciona
+
+## Reglas generales
+
+
+```
 
 La Visión Activa establece el marco general dentro del cual se gobierna el producto.
 
@@ -94,13 +81,36 @@ La visión no necesita describir cada decisión. Su función es establecer el co
 
 ### Dominio
 
+```md
+---
+tipo: dominio
+dominio: "<nombre>"
+estado: Propuesto    # Propuesto | En Delimitación | Delimitado
+vision_origen: VA-001
+descripcion: "<qué sostiene, en una línea>"
+---
+
+## Qué es
+desarrollo del pilar.
+
+## Qué no cubre
+— lista.
+
+## Features prerequeridas 
+— lista.
+
+Reglas y restricciones
+— lista.
+```
+
 Un dominio es una delimitación de un área de trabajo dentro de la gobernanza del producto.
 
 Su propósito es separar contextos que pueden ser tratados de manera diferenciada y facilitar la trazabilidad de las decisiones que pertenecen a cada área.
 
 Un dominio no constituye un nivel adicional de jerarquía entre documentos ni representa necesariamente una funcionalidad, un módulo o una parte física del producto.
 
-El contenido de un dominio no está sujeto a una plantilla única. Puede expresarse mediante reglas, restricciones, principios, condiciones, definiciones, descripciones de funcionamiento, comportamientos esperados o una formulación más libre de aquello que debe quedar previsionado en ese ámbito.
+> [!WARNING]
+> El contenido de un dominio no está sujeto a una plantilla única. Puede expresarse mediante reglas, restricciones, principios, condiciones, definiciones, descripciones de funcionamiento, comportamientos esperados o una formulación más libre de aquello que debe quedar previsionado en ese ámbito.
 
 Lo importante es que el dominio delimite el área que gobierna.
 
@@ -157,10 +167,16 @@ El requisito permite conectar el plano de la decisión con el plano de la produc
 
 No toda observación se convierte inmediatamente en REQ. La formalización depende de que exista una necesidad concreta de producir, modificar o validar algo.
 
-La relación típica es:
+La relación típica de creacion es:
 
 ```text
 ADR → REQ → materialización
+```
+
+La relación típica de mantenimiento es:
+
+```text
+HISTORIA DE USUARIO (INBOX) → REQ (REFINAMIENTO) → materialización
 ```
 
 Un REQ debe poder rastrearse hacia la decisión, contexto o necesidad que le dio origen y hacia el resultado que finalmente lo materializa.
@@ -188,69 +204,42 @@ ADR:
 con este medio, por estas razones."
 ```
 
+
+
 Esta separación evita convertir cada ADR en una repetición del contexto y permite que varios ADR compartan una misma delimitación metodológica.
 
 ---
 
-## 5. Cómo se usa
+## 5. Cómo funciona
 
-DOMER se utiliza cuando existe una necesidad de preservar el razonamiento que gobierna la evolución de un producto.
 
-El punto de entrada puede ser una observación, experiencia, necesidad, cambio de contexto, problema, propuesta o cualquier otra información que pueda conducir a una decisión.
 
-Ese material puede pasar por un proceso de análisis y planificación definido por el equipo.
-
-Una implementación concreta puede adoptar un flujo como:
-
-```text
-crónica → inbox → planificación → decisión → REQ → implementación → validación
-```
-
-pero este flujo no constituye la definición completa de DOMER.
-
-DOMER establece qué relaciones deben conservarse, mientras que la metodología utilizada para procesarlas puede variar.
-
-Si durante el trabajo aparece una decisión relevante sobre el producto, esa decisión puede registrarse mediante un ADR.
-
-Si la decisión produce una obligación concreta que debe materializarse, puede derivarse un REQ.
-
-Si la producción genera evidencia sobre la validez de lo realizado, puede registrarse mediante los mecanismos de validación definidos por la instancia.
-
-La implementación materializa el producto. No sustituye la decisión que la originó.
 
 ---
 
 ## 6. La trazabilidad
 
-La trazabilidad de DOMER busca preservar el recorrido del razonamiento.
+## 6.1. La estructura conceptual
 
-Una decisión debe poder relacionarse con el contexto que la hace comprensible y con aquello que produjo.
-
-La dirección conceptual es:
 
 ```text
-Visión
-  ↓
-Dominio
-  ↓
-Decisión
-  ↓
-Requisito
-  ↓
-Materialización
-  ↓
-Validación
+                 VISIÓN ACTIVA
+                       │
+                       ▼
+                   DOMINIOS
+                       │
+                       ▼
+                     ADR
+                       │
+                       ▼
+                     REQ
+                       │
+                       ▼
+                MATERIALIZACIÓN
+                       │
+                       ▼
+                   VALIDACIÓN
 ```
-
-La relación no implica que todos los elementos tengan que existir siempre.
-
-Puede existir un dominio sin ADR.
-
-Puede existir una decisión que no genere inmediatamente un REQ.
-
-Puede existir un REQ cuya materialización ocurra mediante varias piezas de trabajo.
-
-La trazabilidad tampoco exige registrar cada paso intermedio. El objetivo es conservar las relaciones que resultan necesarias para comprender el producto y modificarlo posteriormente.
 
 ---
 
